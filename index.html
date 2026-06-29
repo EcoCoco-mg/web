@@ -4,18 +4,22 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>EcoCoco - Un monde plus vert, une vie plus saine</title>
+    <link rel="icon" href="data:,">
     <meta
       name="description"
       content="EcoCoco SARL transforme les coques de noix de coco de Madagascar en briquettes écologiques pour réduire la pression sur les forêts, améliorer la cuisson et créer de la valeur locale."
     >
     <link rel="stylesheet" href="styles.css">
+    <script src="site-config.js" defer></script>
     <script src="script.js" defer></script>
   </head>
   <body>
     <header class="site-header" data-header>
       <a class="brand" href="#accueil" aria-label="Accueil EcoCoco">
-        <img src="assets/img/logo-white.png" alt="" class="brand-logo">
-        <span>EcoCoco</span>
+        <span class="brand-mark">
+          <img src="assets/img/logo-mark.png" alt="" class="brand-logo">
+        </span>
+        <span class="brand-name">EcoCoco</span>
       </a>
 
       <button class="nav-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" data-menu-toggle>
@@ -29,6 +33,7 @@
         <a href="#etapes">Étapes franchies</a>
         <a href="#destination">Destination & opportunités</a>
         <a href="#contact">Contactez-nous</a>
+        <a class="nav-social" href="https://www.facebook.com/profile.php?id=61591071884837" target="_blank" rel="noreferrer">Facebook</a>
       </nav>
     </header>
 
@@ -140,32 +145,75 @@
           </div>
 
           <div class="promoters">
-            <div>
+            <div class="promoters-copy">
               <p class="eyebrow dark">Qui sont les promoteurs ?</p>
-              <h2>Une équipe noyau de 6 profils complémentaires.</h2>
+              <h2>Six profils complémentaires pour structurer, produire et faire grandir EcoCoco.</h2>
               <p>
-                EcoCoco est porté par une équipe structurée autour de la stratégie, de la gouvernance, des finances, de l'environnement, des procédés chimiques et de la communication.
+                L'équipe réunit les compétences nécessaires pour passer d'une solution pilote à une entreprise industrielle à impact : stratégie, finance, gouvernance, procédés, environnement et communication.
               </p>
             </div>
-            <div class="role-list">
-              <span>Vision stratégique et développement</span>
-              <span>Gouvernance, conformité et risques</span>
-              <span>Gestion financière et comptable</span>
-              <span>Évaluation de l'impact environnemental</span>
-              <span>Qualité produit, procédés et contrôle scientifique</span>
-              <span>Communication, marque et supports</span>
+
+            <div class="team-grid" aria-label="Promoteurs et responsables EcoCoco">
+              <article class="team-card">
+                <img src="assets/img/promoter-ambinintsoa.png" alt="Ambinintsoa Ratsitoarison" class="team-portrait">
+                <div>
+                  <h3>Ambinintsoa Ratsitoarison</h3>
+                  <strong>CEO & General Manager</strong>
+                  <p>Entrepreneure et coach startup, elle pilote la vision, la structuration du projet, les partenariats stratégiques et le développement de l'écosystème EcoCoco à Madagascar.</p>
+                </div>
+              </article>
+              <article class="team-card">
+                <img src="assets/img/promoter-fenitra.png" alt="Fenitra Rabeso" class="team-portrait">
+                <div>
+                  <h3>Fenitra Rabeso</h3>
+                  <strong>CFO & Strategic Planning</strong>
+                  <p>Fort de plus de 25 ans en stratégie financière et prévision, il sécurise la santé financière du projet et prépare les conditions d'une montée en échelle durable.</p>
+                </div>
+              </article>
+              <article class="team-card">
+                <img src="assets/img/promoter-narindra.png" alt="Narindra Razafindrabe" class="team-portrait">
+                <div>
+                  <h3>Narindra Razafindrabe</h3>
+                  <strong>Chief Governance & Compliance Officer</strong>
+                  <p>Avec plus de 11 ans en audit et gestion des risques, il renforce la gouvernance, la conformité, les systèmes internes et l'excellence opérationnelle.</p>
+                </div>
+              </article>
+              <article class="team-card">
+                <img src="assets/img/promoter-mirasoa.png" alt="Mirasoa Razanamparany" class="team-portrait">
+                <div>
+                  <h3>Mirasoa Razanamparany</h3>
+                  <strong>Lead Chemical Technician</strong>
+                  <p>Chimiste spécialisée dans la transformation de biomasse, elle contribue au contrôle qualité et à la performance technique des briquettes écologiques.</p>
+                </div>
+              </article>
+              <article class="team-card">
+                <img src="assets/img/promoter-fandresena.png" alt="Fandresena Rapanoelina" class="team-portrait">
+                <div>
+                  <h3>Fandresena Rapanoelina</h3>
+                  <strong>Lead Environmental Technician</strong>
+                  <p>Experte en sciences du sol et durabilité, elle veille à l'impact écologique du projet et à sa cohérence avec les standards environnementaux.</p>
+                </div>
+              </article>
+              <article class="team-card">
+                <img src="assets/img/promoter-ramasindraibe.png" alt="Ramasindraibe Andoniaina" class="team-portrait">
+                <div>
+                  <h3>Ramasindraibe Andoniaina</h3>
+                  <strong>Lead Communication Officer</strong>
+                  <p>Stratège en communication, elle structure la marque, les récits visuels et la visibilité commerciale d'EcoCoco auprès des publics cibles.</p>
+                </div>
+              </article>
             </div>
           </div>
 
           <div class="sdg-band">
-            <p class="eyebrow">Contribution aux ODD</p>
+            <p class="eyebrow dark">Contribution aux ODD</p>
             <div class="sdg-list" aria-label="Objectifs de développement durable concernés">
-              <span>ODD 3 - Santé et bien-être</span>
-              <span>ODD 7 - Énergie propre</span>
-              <span>ODD 8 - Travail décent</span>
-              <span>ODD 12 - Consommation responsable</span>
-              <span>ODD 13 - Action climat</span>
-              <span>ODD 15 - Vie terrestre</span>
+              <span class="sdg sdg-3"><strong>ODD 3</strong><small>Santé et bien-être</small></span>
+              <span class="sdg sdg-7"><strong>ODD 7</strong><small>Énergie propre</small></span>
+              <span class="sdg sdg-8"><strong>ODD 8</strong><small>Travail décent</small></span>
+              <span class="sdg sdg-12"><strong>ODD 12</strong><small>Consommation responsable</small></span>
+              <span class="sdg sdg-13"><strong>ODD 13</strong><small>Action climat</small></span>
+              <span class="sdg sdg-15"><strong>ODD 15</strong><small>Vie terrestre</small></span>
             </div>
           </div>
         </div>
@@ -347,7 +395,7 @@
       <section class="section contact-section" id="contact">
         <div class="section-inner contact-layout">
           <div class="contact-copy">
-            <img src="assets/img/logo-color.png" alt="Logo EcoCoco" class="contact-logo">
+            <img src="assets/img/logo-official.png" alt="Logo EcoCoco" class="contact-logo">
             <p class="eyebrow dark">4. Contactez-nous</p>
             <h2>Transformer les déchets d'aujourd'hui en énergie durable pour demain.</h2>
             <p>
@@ -356,18 +404,44 @@
             <div class="contact-actions">
               <a class="button button-primary" href="mailto:ecococomada@gmail.com">Écrire à EcoCoco</a>
               <a class="button button-outline" href="tel:+261343924689">Appeler</a>
+              <a class="button button-facebook" href="https://www.facebook.com/profile.php?id=61591071884837" target="_blank" rel="noreferrer">Facebook</a>
             </div>
           </div>
 
-          <address class="contact-card">
-            <strong>ECOCOCO SARL</strong>
-            <span>LOT 117 BIS Talatamaty MG 105</span>
-            <span>Talatamaty - Antananarivo, Madagascar</span>
-            <a href="mailto:ecococomada@gmail.com">ecococomada@gmail.com</a>
-            <a href="tel:+261343924689">+261 34 39 246 89</a>
-            <span>STAT : 2017112025010056</span>
-            <span>NIF : 6019093781</span>
-          </address>
+          <div class="contact-panel">
+            <address class="contact-card">
+              <strong>ECOCOCO SARL</strong>
+              <span>LOT 117 BIS Talatamaty MG 105</span>
+              <span>Talatamaty - Antananarivo, Madagascar</span>
+              <a href="mailto:ecococomada@gmail.com">ecococomada@gmail.com</a>
+              <a href="tel:+261343924689">+261 34 39 246 89</a>
+              <a href="https://www.facebook.com/profile.php?id=61591071884837" target="_blank" rel="noreferrer">Page Facebook EcoCoco</a>
+              <span>STAT : 2017112025010056</span>
+              <span>NIF : 6019093781</span>
+            </address>
+
+            <form class="contact-form" data-contact-form>
+              <strong>Envoyer un message</strong>
+              <label>
+                Nom et prénom
+                <input type="text" name="name" autocomplete="name" required>
+              </label>
+              <label>
+                Email
+                <input type="email" name="email" autocomplete="email" required>
+              </label>
+              <label>
+                Organisation
+                <input type="text" name="organization" autocomplete="organization" placeholder="Entreprise, institution, association...">
+              </label>
+              <label>
+                Message
+                <textarea name="message" rows="5" required></textarea>
+              </label>
+              <button class="button button-primary" type="submit">Préparer l'email</button>
+              <p class="form-note" data-form-note>Le formulaire ouvre votre messagerie avec un email prérempli à ecococomada@gmail.com.</p>
+            </form>
+          </div>
         </div>
       </section>
     </main>
@@ -380,6 +454,8 @@
       <div class="footer-links">
         <a href="https://documents1.worldbank.org/curated/en/985421614066122537/pdf/Cleaner-Cookstoves-Greener-Lives-Behavioral-Diagnostics-Note-MG-Ethanol-Clean-Cooking-Climate-Finance-Program.pdf" target="_blank" rel="noreferrer">Contexte World Bank</a>
         <a href="https://www.seforall.org/system/files/2024-07/summary-madagascar-cleancooking-en.pdf" target="_blank" rel="noreferrer">Données SEforALL</a>
+        <a href="https://www.facebook.com/profile.php?id=61591071884837" target="_blank" rel="noreferrer">Facebook</a>
+        <a href="mailto:ecococomada@gmail.com">Email</a>
         <a href="#accueil">Retour en haut</a>
       </div>
     </footer>
