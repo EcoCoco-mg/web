@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Guide d'utilisation - Site EcoCoco</title>
+    <style>
+      :root {
+        --ink: #17201c;
+        --muted: #5f6d66;
+        --paper: #f6f3ec;
+        --white: #ffffff;
+        --green: #058f45;
+        --green-dark: #045c33;
+        --coconut: #9a6a3a;
+        --line: rgba(23, 32, 28, 0.14);
+        --shadow: 0 20px 55px rgba(23, 32, 28, 0.12);
+        --radius: 8px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: var(--paper);
+        font-family: Inter, Arial, Helvetica, sans-serif;
+        line-height: 1.58;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .hero {
+        padding: 56px 24px 34px;
+        color: var(--white);
+        background:
+          linear-gradient(120deg, rgba(4, 92, 51, 0.96), rgba(23, 32, 28, 0.96)),
+          radial-gradient(circle at 90% 20%, rgba(240, 100, 47, 0.32), transparent 35%);
+      }
+
+      .hero-inner,
+      .page {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .eyebrow {
+        margin: 0 0 12px;
+        color: #9af2b6;
+        font-size: 0.82rem;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3 {
+        margin: 0;
+        line-height: 1.08;
+      }
+
+      h1 {
+        max-width: 850px;
+        font-size: clamp(2.4rem, 6vw, 4.8rem);
+      }
+
+      .hero p:last-child {
+        max-width: 760px;
+        margin: 18px 0 0;
+        color: rgba(255, 255, 255, 0.82);
+        font-size: 1.08rem;
+      }
+
+      .quick-nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 28px;
+      }
+
+      .quick-nav a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 42px;
+        padding: 10px 13px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: var(--radius);
+        color: var(--white);
+        background: rgba(255, 255, 255, 0.1);
+        font-weight: 850;
+        text-decoration: none;
+      }
+
+      .page {
+        padding: 34px 0 70px;
+      }
+
+      .notice {
+        display: grid;
+        gap: 8px;
+        margin-bottom: 20px;
+        padding: 18px;
+        border: 1px solid rgba(5, 143, 69, 0.22);
+        border-radius: var(--radius);
+        background: rgba(255, 255, 255, 0.78);
+        box-shadow: var(--shadow);
+      }
+
+      .notice strong {
+        color: var(--green-dark);
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+        margin: 22px 0;
+      }
+
+      .card,
+      section {
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: rgba(255, 255, 255, 0.86);
+        box-shadow: var(--shadow);
+      }
+
+      .card {
+        padding: 18px;
+      }
+
+      .card strong {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--green-dark);
+        font-size: 1.05rem;
+      }
+
+      section {
+        margin-top: 18px;
+        overflow: hidden;
+      }
+
+      section > header {
+        padding: 22px 24px;
+        color: var(--white);
+        background: var(--ink);
+      }
+
+      section > header p {
+        margin: 8px 0 0;
+        color: rgba(255, 255, 255, 0.74);
+      }
+
+      .content {
+        padding: 22px 24px 26px;
+      }
+
+      ol,
+      ul {
+        margin: 14px 0 0;
+        padding-left: 1.3rem;
+      }
+
+      li + li {
+        margin-top: 8px;
+      }
+
+      code,
+      .path {
+        display: inline-block;
+        padding: 2px 6px;
+        border-radius: 6px;
+        color: #064928;
+        background: rgba(5, 143, 69, 0.1);
+        font-family: Consolas, "Courier New", monospace;
+        font-size: 0.95em;
+        font-weight: 700;
+      }
+
+      .path-block {
+        margin: 12px 0;
+        padding: 12px;
+        border: 1px dashed rgba(5, 143, 69, 0.35);
+        border-radius: var(--radius);
+        color: #064928;
+        background: rgba(5, 143, 69, 0.08);
+        font-family: Consolas, "Courier New", monospace;
+        font-weight: 700;
+        overflow-wrap: anywhere;
+      }
+
+      .do-dont {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+      }
+
+      .good,
+      .bad {
+        padding: 16px;
+        border-radius: var(--radius);
+      }
+
+      .good {
+        border: 1px solid rgba(5, 143, 69, 0.24);
+        background: rgba(5, 143, 69, 0.08);
+      }
+
+      .bad {
+        border: 1px solid rgba(240, 100, 47, 0.24);
+        background: rgba(240, 100, 47, 0.08);
+      }
+
+      .step-title {
+        color: var(--green-dark);
+        font-weight: 900;
+      }
+
+      .small {
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      .footer-note {
+        margin-top: 28px;
+        padding: 18px;
+        border-radius: var(--radius);
+        color: rgba(255, 255, 255, 0.78);
+        background: var(--ink);
+      }
+
+      @media (max-width: 860px) {
+        .grid,
+        .do-dont {
+          grid-template-columns: 1fr;
+        }
+
+        .hero {
+          padding-top: 36px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="hero">
+      <div class="hero-inner">
+        <p class="eyebrow">Guide EcoCoco</p>
+        <h1>Modifier, enregistrer et publier le site EcoCoco</h1>
+        <p>Ce guide explique quoi modifier, quel dossier envoyer en ligne, comment garder des sauvegardes et comment publier le site sur GitHub Pages.</p>
+        <nav class="quick-nav" aria-label="Navigation rapide">
+          <a href="#dossiers">Dossiers</a>
+          <a href="#admin">Module de gestion</a>
+          <a href="#images">Images</a>
+          <a href="#sauvegardes">Sauvegardes</a>
+          <a href="#github">Upload GitHub</a>
+          <a href="#erreurs">Erreurs courantes</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page">
+      <div class="notice">
+        <strong>La regle la plus importante</strong>
+        <span>Pour publier le site, envoyer uniquement le contenu du dossier <span class="path">1-Site_a_uploader</span>. Ne pas envoyer les dossiers <span class="path">2-Gestion_admin</span> et <span class="path">3-Travail_ne_pas_uploader</span>.</span>
+      </div>
+
+      <div class="grid" id="dossiers">
+        <article class="card">
+          <strong>1-Site_a_uploader</strong>
+          <span>Dossier public du site. C'est celui qui part sur GitHub ou chez l'hebergeur.</span>
+        </article>
+        <article class="card">
+          <strong>2-Gestion_admin</strong>
+          <span>Module local pour modifier le site. Il reste sur l'ordinateur.</span>
+        </article>
+        <article class="card">
+          <strong>3-Travail_ne_pas_uploader</strong>
+          <span>Documents de travail, photos originales, captures, guides et sauvegardes.</span>
+        </article>
+      </div>
+
+      <section id="admin">
+        <header>
+          <h2>1. Utiliser le module de gestion</h2>
+          <p>Le module sert a modifier le contenu sans toucher au code.</p>
+        </header>
+        <div class="content">
+          <ol>
+            <li>Ouvrir le dossier <span class="path">2-Gestion_admin</span>.</li>
+            <li>Double-cliquer sur <span class="path">Lancer_Admin_EcoCoco.bat</span>.</li>
+            <li>Le navigateur ouvre la page de gestion locale.</li>
+            <li>Choisir un onglet : <span class="path">Modifier les textes</span>, <span class="path">Style du site</span>, <span class="path">Images &amp; logos</span> ou <span class="path">Finaliser</span>.</li>
+            <li>Faire les modifications.</li>
+            <li>Cliquer sur <span class="path">Enregistrer</span>.</li>
+            <li>Verifier l'apercu a droite.</li>
+            <li>Quand tout est bon, aller dans <span class="path">Finaliser</span> puis cliquer sur <span class="path">Preparer le dossier a uploader</span>.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section>
+        <header>
+          <h2>2. Modifier les textes</h2>
+          <p>Tous les textes importants du site sont ranges par section.</p>
+        </header>
+        <div class="content">
+          <ol>
+            <li>Aller dans <span class="path">Modifier les textes</span>.</li>
+            <li>Utiliser la recherche pour trouver rapidement un bloc.</li>
+            <li>Exemples de recherche : <span class="path">promoteur</span>, <span class="path">contact</span>, <span class="path">impact</span>, <span class="path">Carte impact</span>, <span class="path">financement</span>.</li>
+            <li>Modifier le champ voulu.</li>
+            <li>Cliquer sur <span class="path">Enregistrer</span>.</li>
+          </ol>
+          <p class="small">Astuce : pour modifier les quatre chiffres dans le bloc d'impact, rechercher <span class="path">Carte impact</span>.</p>
+        </div>
+      </section>
+
+      <section>
+        <header>
+          <h2>3. Modifier le style du site</h2>
+          <p>Cette partie sert a changer l'apparence generale.</p>
+        </header>
+        <div class="content">
+          <ul>
+            <li><span class="step-title">Couleurs principales :</span> couleurs du texte, du fond, du vert EcoCoco, du brun coco, etc.</li>
+            <li><span class="step-title">Polices :</span> police du texte, police des titres, taille generale.</li>
+            <li><span class="step-title">En-tete, menu et logo :</span> hauteur de la barre menu, opacite derriere les menus, taille du rond du logo, taille du logo dans le rond.</li>
+            <li><span class="step-title">Banniere d'accueil :</span> hauteur de la grande banniere et position du texte.</li>
+            <li><span class="step-title">Mise en page :</span> espacements et arrondis.</li>
+          </ul>
+          <p class="small">Apres modification, cliquer sur <span class="path">Enregistrer</span> puis verifier l'apercu.</p>
+        </div>
+      </section>
+
+      <section id="images">
+        <header>
+          <h2>4. Modifier ou ajouter des images</h2>
+          <p>Les images importantes peuvent etre remplacees directement depuis le module.</p>
+        </header>
+        <div class="content">
+          <ol>
+            <li>Aller dans <span class="path">Images &amp; logos</span>.</li>
+            <li>Trouver l'image a remplacer : logo, banniere, photo de section, promoteur, etc.</li>
+            <li>Choisir une image deja presente dans la liste, ou cliquer sur <span class="path">Envoyer une nouvelle image</span>.</li>
+            <li>Choisir l'image sur l'ordinateur.</li>
+            <li>Cliquer sur <span class="path">Enregistrer</span>.</li>
+          </ol>
+          <p>Les nouvelles images sont rangees ici :</p>
+          <div class="path-block">1-Site_a_uploader/assets/img/uploads/</div>
+          <p class="small">Conseil : utiliser des images JPG, PNG ou WEBP. Eviter les images trop lourdes pour que le site charge rapidement.</p>
+        </div>
+      </section>
+
+      <section id="sauvegardes">
+        <header>
+          <h2>5. Enregistrer et garder des sauvegardes</h2>
+          <p>Il y a deux niveaux de sauvegarde : automatique et manuelle.</p>
+        </header>
+        <div class="content">
+          <h3>Sauvegarde normale</h3>
+          <ol>
+            <li>Apres chaque modification importante, cliquer sur <span class="path">Enregistrer</span>.</li>
+            <li>Le site public local est mis a jour dans <span class="path">1-Site_a_uploader</span>.</li>
+            <li>Une copie de securite est creee automatiquement dans le dossier de travail.</li>
+          </ol>
+          <p>Les copies automatiques sont ici :</p>
+          <div class="path-block">3-Travail_ne_pas_uploader/sauvegardes-admin/</div>
+
+          <h3>Copie de securite manuelle</h3>
+          <ol>
+            <li>Aller dans <span class="path">Finaliser</span>.</li>
+            <li>Cliquer sur <span class="path">Telecharger une copie</span>.</li>
+            <li>Conserver ce fichier dans un endroit sur.</li>
+          </ol>
+
+          <h3>Restaurer une ancienne copie</h3>
+          <ol>
+            <li>Aller dans <span class="path">Finaliser</span>.</li>
+            <li>Cliquer sur <span class="path">Restaurer une copie</span>.</li>
+            <li>Choisir le fichier de sauvegarde.</li>
+            <li>Cliquer sur <span class="path">Enregistrer</span>.</li>
+            <li>Verifier l'apercu.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section>
+        <header>
+          <h2>6. Preparer le dossier a uploader</h2>
+          <p>Cette etape finalise le site avant publication.</p>
+        </header>
+        <div class="content">
+          <ol>
+            <li>Ouvrir le module de gestion.</li>
+            <li>Cliquer sur <span class="path">Enregistrer</span>.</li>
+            <li>Aller dans <span class="path">Finaliser</span>.</li>
+            <li>Cliquer sur <span class="path">Preparer le dossier a uploader</span>.</li>
+            <li>Utiliser ensuite le dossier <span class="path">1-Site_a_uploader</span> pour la publication.</li>
+          </ol>
+          <div class="do-dont">
+            <div class="good">
+              <strong>A envoyer</strong>
+              <ul>
+                <li><span class="path">index.html</span></li>
+                <li><span class="path">styles.css</span></li>
+                <li><span class="path">script.js</span></li>
+                <li><span class="path">site-config.js</span></li>
+                <li><span class="path">assets</span></li>
+              </ul>
+            </div>
+            <div class="bad">
+              <strong>Ne pas envoyer</strong>
+              <ul>
+                <li><span class="path">2-Gestion_admin</span></li>
+                <li><span class="path">3-Travail_ne_pas_uploader</span></li>
+                <li>Les captures d'erreurs</li>
+                <li>Les documents Word/PDF de travail</li>
+                <li>Les archives <span class="path">.rar</span> seules</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="github">
+        <header>
+          <h2>7. Publier sur GitHub Pages</h2>
+          <p>Methode simple depuis le navigateur, sans ligne de commande.</p>
+        </header>
+        <div class="content">
+          <h3>Premiere publication</h3>
+          <ol>
+            <li>Aller sur <a href="https://github.com" target="_blank" rel="noreferrer">github.com</a> et se connecter.</li>
+            <li>Cliquer sur <span class="path">New repository</span>.</li>
+            <li>Donner un nom au depot, par exemple <span class="path">ecococo-site</span>.</li>
+            <li>Choisir <span class="path">Public</span> si le site doit etre publie gratuitement avec GitHub Pages.</li>
+            <li>Creer le depot.</li>
+            <li>Cliquer sur <span class="path">Add file</span> puis <span class="path">Upload files</span>.</li>
+            <li>Ouvrir sur l'ordinateur le dossier :</li>
+          </ol>
+          <div class="path-block">F:\Documents\Programmation\EcoCoco\1-Site_a_uploader</div>
+          <ol start="8">
+            <li>Glisser dans GitHub le contenu du dossier, pas le dossier parent lui-meme.</li>
+            <li>Verifier que <span class="path">index.html</span> est bien a la racine du depot GitHub.</li>
+            <li>Cliquer sur <span class="path">Commit changes</span>.</li>
+            <li>Aller dans <span class="path">Settings</span> puis <span class="path">Pages</span>.</li>
+            <li>Dans <span class="path">Build and deployment</span>, choisir <span class="path">Deploy from a branch</span>.</li>
+            <li>Choisir la branche <span class="path">main</span> et le dossier <span class="path">/ root</span>.</li>
+            <li>Cliquer sur <span class="path">Save</span>.</li>
+            <li>Attendre quelques minutes, puis ouvrir le lien GitHub Pages indique par GitHub.</li>
+          </ol>
+
+          <h3>Mettre a jour le site deja publie</h3>
+          <ol>
+            <li>Modifier le site dans le module de gestion.</li>
+            <li>Cliquer sur <span class="path">Enregistrer</span>.</li>
+            <li>Cliquer sur <span class="path">Preparer le dossier a uploader</span>.</li>
+            <li>Retourner dans le depot GitHub du site.</li>
+            <li>Cliquer sur <span class="path">Add file</span> puis <span class="path">Upload files</span>.</li>
+            <li>Glisser les fichiers et le dossier <span class="path">assets</span> depuis <span class="path">1-Site_a_uploader</span>.</li>
+            <li>GitHub remplace les anciens fichiers par les nouveaux.</li>
+            <li>Cliquer sur <span class="path">Commit changes</span>.</li>
+            <li>Attendre quelques minutes et rafraichir le site public.</li>
+          </ol>
+
+          <p class="small">Si les changements ne sont pas visibles tout de suite, attendre encore quelques minutes puis faire Ctrl + F5 dans le navigateur.</p>
+        </div>
+      </section>
+
+      <section>
+        <header>
+          <h2>8. Publier chez un autre hebergeur</h2>
+          <p>La logique est la meme que pour GitHub.</p>
+        </header>
+        <div class="content">
+          <ol>
+            <li>Preparer le dossier a uploader depuis l'admin.</li>
+            <li>Envoyer le contenu de <span class="path">1-Site_a_uploader</span> dans le dossier public de l'hebergeur.</li>
+            <li>Le fichier <span class="path">index.html</span> doit etre a la racine du site public.</li>
+            <li>Verifier que le dossier <span class="path">assets</span> est bien envoye avec toutes les images.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section id="erreurs">
+        <header>
+          <h2>9. Erreurs courantes et solutions</h2>
+          <p>Quelques problemes classiques et leur correction.</p>
+        </header>
+        <div class="content">
+          <h3>Le site affiche une ancienne version</h3>
+          <ul>
+            <li>Verifier que vous avez clique sur <span class="path">Enregistrer</span>.</li>
+            <li>Verifier que vous avez clique sur <span class="path">Preparer le dossier a uploader</span>.</li>
+            <li>Sur le site public, faire Ctrl + F5.</li>
+            <li>Sur GitHub Pages, attendre quelques minutes apres le commit.</li>
+          </ul>
+
+          <h3>Une image ne s'affiche pas</h3>
+          <ul>
+            <li>Verifier que le dossier <span class="path">assets</span> a bien ete envoye.</li>
+            <li>Verifier que l'image est bien dans <span class="path">assets/img</span> ou <span class="path">assets/img/uploads</span>.</li>
+            <li>Eviter les noms de fichiers trop compliques si l'image est ajoutee manuellement.</li>
+          </ul>
+
+          <h3>Le module de gestion ne s'ouvre pas</h3>
+          <ul>
+            <li>Utiliser <span class="path">Lancer_Admin_EcoCoco.bat</span>, pas un double-clic direct sur <span class="path">admin.html</span>.</li>
+            <li>Si une fenetre noire s'ouvre, la laisser ouverte pendant l'utilisation du module.</li>
+            <li>Fermer cette fenetre seulement quand vous avez fini.</li>
+          </ul>
+
+          <h3>J'ai fait une mauvaise modification</h3>
+          <ul>
+            <li>Ne pas publier tout de suite.</li>
+            <li>Aller dans <span class="path">Finaliser</span> puis utiliser <span class="path">Restaurer une copie</span>.</li>
+            <li>Si besoin, utiliser une copie automatique dans <span class="path">3-Travail_ne_pas_uploader/sauvegardes-admin</span>.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <header>
+          <h2>10. Checklist avant publication</h2>
+          <p>A faire avant chaque upload.</p>
+        </header>
+        <div class="content">
+          <ul>
+            <li>Les textes importants ont ete verifies.</li>
+            <li>Les images s'affichent correctement.</li>
+            <li>Le logo et le menu sont lisibles.</li>
+            <li>Le formulaire de contact ouvre bien un email vers EcoCoco.</li>
+            <li>Le site a ete enregistre.</li>
+            <li>Le dossier a uploader a ete prepare.</li>
+            <li>Seul le contenu de <span class="path">1-Site_a_uploader</span> est envoye.</li>
+          </ul>
+        </div>
+      </section>
+
+      <div class="footer-note">
+        <strong>Resume rapide :</strong>
+        Modifier dans le module, cliquer sur Enregistrer, aller dans Finaliser, preparer le dossier a uploader, puis envoyer uniquement le contenu de <span class="path">1-Site_a_uploader</span>.
+      </div>
+    </main>
+  </body>
+</html>
