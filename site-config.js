@@ -41,7 +41,7 @@ window.ECOCOCO_CONFIG = {
   },
   "links": {
     "email": "ecococomada@gmail.com",
-    "phone": "+261343924689",
+    "phone": "+261 34 29 246 89",
     "facebook": "https://www.facebook.com/profile.php?id=61591071884837"
   },
   "texts": [
@@ -834,7 +834,14 @@ window.ECOCOCO_CONFIG = {
       "group": "4 - Contact",
       "label": "Bouton du formulaire",
       "selector": ".contact-form button",
-      "value": "Préparer l'email"
+      "value": "Envoyer le message"
+    },
+    {
+      "id": "contact.form.note",
+      "group": "4 - Contact",
+      "label": "Note sous le formulaire",
+      "selector": ".contact-form .form-note",
+      "value": "Le message sera envoyé directement à EcoCoco."
     },
     {
       "id": "footer.slogan",
@@ -1212,5 +1219,5 @@ window.ECOCOCO_CONFIG = {
     "assets/img/promoter-fandresena.png",
     "assets/img/promoter-ramasindraibe.png"
   ],
-  "updatedAt": "2026-06-30T12:32:56"
+  "updatedAt": "2026-06-30T14:58:59"
 };

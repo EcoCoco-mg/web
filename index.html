@@ -403,7 +403,7 @@
             </p>
             <div class="contact-actions">
               <a class="button button-primary" href="mailto:ecococomada@gmail.com">Écrire à EcoCoco</a>
-              <a class="button button-outline" href="tel:+261343924689">Appeler</a>
+              <a class="button button-outline" href="tel:+261342924689">Appeler</a>
               <a class="button button-facebook" href="https://www.facebook.com/profile.php?id=61591071884837" target="_blank" rel="noreferrer">Facebook</a>
             </div>
           </div>
@@ -420,8 +420,15 @@
               <span>NIF : 6019093781</span>
             </address>
 
-            <form class="contact-form" data-contact-form>
+            <form class="contact-form" action="https://formsubmit.co/ajax/ecococomada@gmail.com" method="POST" data-contact-form>
               <strong>Envoyer un message</strong>
+              <input type="hidden" name="_subject" value="Nouveau message depuis le site EcoCoco">
+              <input type="hidden" name="_template" value="table">
+              <input type="hidden" name="_captcha" value="false">
+              <label class="form-honey" aria-hidden="true">
+                Ne pas remplir ce champ
+                <input type="text" name="_honey" tabindex="-1" autocomplete="off">
+              </label>
               <label>
                 Nom et prénom
                 <input type="text" name="name" autocomplete="name" required>
@@ -438,8 +445,8 @@
                 Message
                 <textarea name="message" rows="5" required></textarea>
               </label>
-              <button class="button button-primary" type="submit">Préparer l'email</button>
-              <p class="form-note" data-form-note>Le formulaire ouvre votre messagerie avec un email prérempli à ecococomada@gmail.com.</p>
+              <button class="button button-primary" type="submit">Envoyer le message</button>
+              <p class="form-note" data-form-note>Le message sera envoyé directement à EcoCoco.</p>
             </form>
           </div>
         </div>

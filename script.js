@@ -110,10 +110,11 @@ function applyImages(images = []) {
 }
 
 function applyLinks(links = {}) {
-  const email = links.email || "ecococomada@gmail.com";
-  const phone = links.phone || "+261343924689";
+  const email = String(links.email || "ecococomada@gmail.com").trim();
+  const phone = links.phone || "+261 34 29 246 89";
   const facebook = links.facebook || "https://www.facebook.com/profile.php?id=61591071884837";
   window.ecococoContactEmail = email;
+  window.ecococoFormEndpoint = `https://formsubmit.co/ajax/${email}`;
 
   document.querySelectorAll('a[href^="mailto:"]').forEach((link) => {
     link.href = `mailto:${email}`;
@@ -121,10 +122,14 @@ function applyLinks(links = {}) {
   });
   document.querySelectorAll('a[href^="tel:"]').forEach((link) => {
     link.href = `tel:${phone.replace(/\s+/g, "")}`;
+    if (/\d/.test(link.textContent)) link.textContent = phone;
   });
   document.querySelectorAll('a[href*="facebook.com"]').forEach((link) => {
     link.href = facebook;
   });
+  if (contactForm) {
+    contactForm.action = window.ecococoFormEndpoint;
+  }
 }
 
 function applySiteConfig() {
@@ -189,30 +194,66 @@ lightbox.addEventListener("click", (event) => {
   }
 });
 
-contactForm?.addEventListener("submit", (event) => {
+contactForm?.addEventListener("submit", async (event) => {
   event.preventDefault();
   const formData = new FormData(contactForm);
+  if (String(formData.get("_honey") || "").trim()) {
+    contactForm.reset();
+    return;
+  }
+
   const name = String(formData.get("name") || "").trim();
   const email = String(formData.get("email") || "").trim();
   const organization = String(formData.get("organization") || "").trim();
   const message = String(formData.get("message") || "").trim();
   const subject = `Contact depuis le site EcoCoco - ${name || "Visiteur"}`;
-  const body = [
-    `Nom : ${name}`,
-    `Email : ${email}`,
-    organization ? `Organisation : ${organization}` : null,
-    "",
-    "Message :",
-    message,
-  ]
-    .filter((line) => line !== null)
-    .join("\n");
 
-  if (formNote) {
-    formNote.textContent = "Votre messagerie va s'ouvrir avec un email prérempli pour EcoCoco.";
-  }
+  formData.set("_subject", subject);
+  formData.set("_template", "table");
+  formData.set("_captcha", "false");
+  formData.set("_replyto", email);
+  formData.set("name", name);
+  formData.set("email", email);
+  formData.set("organization", organization);
+  formData.set("message", message);
+
   const emailTo = window.ecococoContactEmail || siteConfig.links?.email || "ecococomada@gmail.com";
-  window.location.href = `mailto:${emailTo}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  const endpoint = contactForm.action || `https://formsubmit.co/ajax/${emailTo}`;
+  const submitButton = contactForm.querySelector('button[type="submit"]');
+  const originalButtonText = submitButton?.textContent || "Envoyer le message";
+
+  if (submitButton) {
+    submitButton.disabled = true;
+    submitButton.textContent = "Envoi en cours...";
+  }
+  if (formNote) {
+    formNote.textContent = "Envoi du message en cours...";
+  }
+
+  try {
+    const response = await fetch(endpoint, {
+      method: "POST",
+      headers: { Accept: "application/json" },
+      body: formData,
+    });
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok || result.success === false || result.success === "false") {
+      throw new Error(result.message || "Envoi impossible");
+    }
+    contactForm.reset();
+    if (formNote) {
+      formNote.textContent = "Message envoyé. Merci, EcoCoco vous répondra dès que possible.";
+    }
+  } catch (error) {
+    if (formNote) {
+      formNote.textContent = `Le message n'a pas pu être envoyé automatiquement. Vous pouvez écrire directement à ${emailTo}.`;
+    }
+  } finally {
+    if (submitButton) {
+      submitButton.disabled = false;
+      submitButton.textContent = originalButtonText;
+    }
+  }
 });
 
 document.addEventListener("keydown", (event) => {
