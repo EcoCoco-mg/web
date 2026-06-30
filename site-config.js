@@ -228,7 +228,7 @@ window.ECOCOCO_CONFIG = {
       "group": "1 - Qui sommes-nous",
       "label": "Titre principal",
       "selector": ".about-copy h2",
-      "value": "Une SARL malgache qui transforme les coques de coco en énergie utile."
+      "value": "Une SARL malgache qui transforme les coques de coco en énergie durable."
     },
     {
       "id": "about.p1",
@@ -270,7 +270,7 @@ window.ECOCOCO_CONFIG = {
       "group": "1 - Ce que nous offrons",
       "label": "Carte 1 - paragraphe",
       "selector": ".offer-grid article:nth-child(1) p",
-      "value": "Les briquettes EcoCoco substituent progressivement une ressource issue de déchets agricoles au charbon de bois traditionnel."
+      "value": "Les briquettes EcoCoco remplacent progressivement le charbon de bois traditionnel par une ressource issue de déchets agricoles"
     },
     {
       "id": "offer.2.tag",
@@ -371,7 +371,7 @@ window.ECOCOCO_CONFIG = {
       "label": "Étape 3",
       "selector": ".value-chain li:nth-child(3)",
       "mode": "html",
-      "value": "<span>Briquetage</span> Fabrication de briquettes propres, calibrées et plus faciles à utiliser."
+      "value": "<span>Briquetage</span> Fabrication de briquettes propres, calibrées et facile d'utilisation"
     },
     {
       "id": "chain.4",
@@ -540,7 +540,7 @@ window.ECOCOCO_CONFIG = {
       "group": "2 - Étapes franchies",
       "label": "Pastille de section",
       "selector": "#etapes .section-kicker",
-      "value": "2. Les étapes franchies à ce jour et nos prochaines destinations"
+      "value": "2. Les étapes franchies ..."
     },
     {
       "id": "steps.eyebrow",
@@ -666,14 +666,14 @@ window.ECOCOCO_CONFIG = {
       "group": "3 - Destination",
       "label": "Pastille de section",
       "selector": "#destination .section-kicker",
-      "value": "3. Notre destination et les opportunités"
+      "value": "3. Les opportunités et la destination"
     },
     {
       "id": "destination.eyebrow",
       "group": "3 - Destination",
       "label": "Petit titre",
       "selector": ".destination-hero .eyebrow",
-      "value": "Notre destination"
+      "value": ""
     },
     {
       "id": "destination.title",
@@ -722,7 +722,7 @@ window.ECOCOCO_CONFIG = {
       "group": "3 - Opportunités",
       "label": "Titre",
       "selector": ".opportunity-layout h2",
-      "value": "EcoCoco cherche des partenaires utiles, pas seulement de la visibilité."
+      "value": "EcoCoco est ouvert à des partenariats structurants"
     },
     {
       "id": "impact.eyebrow",
@@ -744,6 +744,62 @@ window.ECOCOCO_CONFIG = {
       "label": "Paragraphe impact",
       "selector": ".impact-calculator p:nth-of-type(2)",
       "value": "Selon les hypothèses techniques EcoCoco, cette production initiale représenterait environ 15 tonnes de bois sec évitées par mois, 75 arbres préservés par mois et 42 ménages entièrement alimentés en substitution annuelle du charbon."
+    },
+    {
+      "id": "impact.metric.1.value",
+      "group": "3 - Impact projeté",
+      "label": "Carte impact 1 - chiffre",
+      "selector": ".impact-metrics div:nth-child(1) strong",
+      "value": "15 t"
+    },
+    {
+      "id": "impact.metric.1.label",
+      "group": "3 - Impact projeté",
+      "label": "Carte impact 1 - libellé",
+      "selector": ".impact-metrics div:nth-child(1) span",
+      "value": "bois sec évité / mois"
+    },
+    {
+      "id": "impact.metric.2.value",
+      "group": "3 - Impact projeté",
+      "label": "Carte impact 2 - chiffre",
+      "selector": ".impact-metrics div:nth-child(2) strong",
+      "value": "75"
+    },
+    {
+      "id": "impact.metric.2.label",
+      "group": "3 - Impact projeté",
+      "label": "Carte impact 2 - libellé",
+      "selector": ".impact-metrics div:nth-child(2) span",
+      "value": "arbres préservés / mois"
+    },
+    {
+      "id": "impact.metric.3.value",
+      "group": "3 - Impact projeté",
+      "label": "Carte impact 3 - chiffre",
+      "selector": ".impact-metrics div:nth-child(3) strong",
+      "value": "0,56 ha"
+    },
+    {
+      "id": "impact.metric.3.label",
+      "group": "3 - Impact projeté",
+      "label": "Carte impact 3 - libellé",
+      "selector": ".impact-metrics div:nth-child(3) span",
+      "value": "surface forestière épargnée / an"
+    },
+    {
+      "id": "impact.metric.4.value",
+      "group": "3 - Impact projeté",
+      "label": "Carte impact 4 - chiffre",
+      "selector": ".impact-metrics div:nth-child(4) strong",
+      "value": "42"
+    },
+    {
+      "id": "impact.metric.4.label",
+      "group": "3 - Impact projeté",
+      "label": "Carte impact 4 - libellé",
+      "selector": ".impact-metrics div:nth-child(4) span",
+      "value": "ménages servis / mois"
     },
     {
       "id": "contact.eyebrow",
@@ -925,7 +981,7 @@ window.ECOCOCO_CONFIG = {
       "group": "2 - Reconnaissance",
       "label": "Financement 4 - texte",
       "selector": ".funding-row:nth-of-type(4) span",
-      "value": "Financement et accompagnement cités dans la trajectoire de montée en échelle."
+      "value": "Financement et accompagnement pour une mise à l'échelle."
     },
     {
       "id": "funding.5.title",
@@ -1156,5 +1212,5 @@ window.ECOCOCO_CONFIG = {
     "assets/img/promoter-fandresena.png",
     "assets/img/promoter-ramasindraibe.png"
   ],
-  "updatedAt": "2026-06-28T16:15:28"
+  "updatedAt": "2026-06-30T12:32:56"
 };
