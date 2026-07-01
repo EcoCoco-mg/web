@@ -7,6 +7,11 @@ const lightboxCaption = document.querySelector("[data-lightbox-caption]");
 const lightboxClose = document.querySelector("[data-lightbox-close]");
 const contactForm = document.querySelector("[data-contact-form]");
 const formNote = document.querySelector("[data-form-note]");
+const videoList = document.querySelector("[data-video-list]");
+const videoSearch = document.querySelector("[data-video-search]");
+const videoPlayer = document.querySelector("[data-video-player]");
+const videoFrame = document.querySelector("[data-video-frame]");
+const videoCurrentTitle = document.querySelector("[data-video-current-title]");
 const placeholder = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
 const siteConfig = window.ECOCOCO_CONFIG || {};
 
@@ -113,6 +118,7 @@ function applyLinks(links = {}) {
   const email = String(links.email || "ecococomada@gmail.com").trim();
   const phone = links.phone || "+261 34 29 246 89";
   const facebook = links.facebook || "https://www.facebook.com/profile.php?id=61591071884837";
+  const linkedin = links.linkedin || "https://www.linkedin.com/company/ecococo-mdg/";
   window.ecococoContactEmail = email;
   window.ecococoFormEndpoint = `https://formsubmit.co/ajax/${email}`;
 
@@ -127,8 +133,92 @@ function applyLinks(links = {}) {
   document.querySelectorAll('a[href*="facebook.com"]').forEach((link) => {
     link.href = facebook;
   });
+  document.querySelectorAll('a[href*="linkedin.com"]').forEach((link) => {
+    link.href = linkedin;
+  });
   if (contactForm) {
     contactForm.action = window.ecococoFormEndpoint;
+  }
+}
+
+function drivePreviewUrl(url) {
+  const value = String(url || "").trim();
+  if (!value) return "";
+  if (value.includes("/preview")) return value;
+  const fileMatch = value.match(/\/file\/d\/([^/]+)/);
+  const idMatch = value.match(/[?&]id=([^&]+)/);
+  const id = fileMatch?.[1] || idMatch?.[1] || "";
+  return id ? `https://drive.google.com/file/d/${id}/preview` : value;
+}
+
+function applyVideos(videos = []) {
+  if (!videoList) return;
+  const visibleVideos = videos
+    .map((video, index) => ({
+      ...video,
+      id: video.id || `video-${index}`,
+      title: String(video.title || `Vidéo ${index + 1}`).trim(),
+      embedUrl: drivePreviewUrl(video.embedUrl || video.url),
+    }))
+    .filter((video) => video.embedUrl);
+
+  if (!visibleVideos.length) {
+    if (videoPlayer) videoPlayer.hidden = true;
+    const empty = document.createElement("p");
+    empty.className = "video-empty";
+    empty.textContent = "La vidéothèque sera bientôt disponible.";
+    videoList.innerHTML = "";
+    videoList.appendChild(empty);
+    return;
+  }
+
+  let activeVideo = visibleVideos[0];
+
+  function loadVideo(video) {
+    activeVideo = video;
+    if (videoPlayer) videoPlayer.hidden = false;
+    if (videoFrame) {
+      videoFrame.innerHTML = "";
+      const iframe = document.createElement("iframe");
+      iframe.src = video.embedUrl;
+      iframe.title = video.title;
+      iframe.loading = "lazy";
+      iframe.allow = "autoplay; fullscreen";
+      iframe.allowFullscreen = true;
+      videoFrame.appendChild(iframe);
+    }
+    if (videoCurrentTitle) videoCurrentTitle.textContent = video.title;
+    videoList.querySelectorAll("button").forEach((button) => {
+      button.classList.toggle("is-active", button.dataset.videoId === video.id);
+    });
+  }
+
+  function renderTitles() {
+    const query = String(videoSearch?.value || "").trim().toLowerCase();
+    const filtered = visibleVideos.filter((video) => video.title.toLowerCase().includes(query));
+    videoList.innerHTML = "";
+    if (!filtered.length) {
+      const empty = document.createElement("p");
+      empty.className = "video-empty";
+      empty.textContent = "Aucune vidéo ne correspond à cette recherche.";
+      videoList.appendChild(empty);
+      return;
+    }
+    filtered.forEach((video) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.dataset.videoId = video.id;
+      button.textContent = video.title;
+      button.classList.toggle("is-active", activeVideo.id === video.id);
+      button.addEventListener("click", () => loadVideo(video));
+      videoList.appendChild(button);
+    });
+  }
+
+  renderTitles();
+  loadVideo(activeVideo);
+  if (videoSearch) {
+    videoSearch.addEventListener("input", renderTitles);
   }
 }
 
@@ -137,6 +227,7 @@ function applySiteConfig() {
   applyTexts(siteConfig.texts);
   applyImages(siteConfig.images);
   applyLinks(siteConfig.links);
+  applyVideos(siteConfig.videos);
 }
 
 function updateHeader() {
@@ -208,14 +299,16 @@ contactForm?.addEventListener("submit", async (event) => {
   const message = String(formData.get("message") || "").trim();
   const subject = `Contact depuis le site EcoCoco - ${name || "Visiteur"}`;
 
-  formData.set("_subject", subject);
-  formData.set("_template", "table");
-  formData.set("_captcha", "false");
-  formData.set("_replyto", email);
-  formData.set("name", name);
-  formData.set("email", email);
-  formData.set("organization", organization);
-  formData.set("message", message);
+  const payload = {
+    _subject: subject,
+    _template: "table",
+    _captcha: "false",
+    _replyto: email,
+    name,
+    email,
+    organization,
+    message,
+  };
 
   const emailTo = window.ecococoContactEmail || siteConfig.links?.email || "ecococomada@gmail.com";
   const endpoint = contactForm.action || `https://formsubmit.co/ajax/${emailTo}`;
@@ -233,12 +326,21 @@ contactForm?.addEventListener("submit", async (event) => {
   try {
     const response = await fetch(endpoint, {
       method: "POST",
-      headers: { Accept: "application/json" },
-      body: formData,
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(payload),
     });
-    const result = await response.json().catch(() => ({}));
+    const resultText = await response.text();
+    let result = {};
+    try {
+      result = resultText ? JSON.parse(resultText) : {};
+    } catch (error) {
+      result = { message: resultText };
+    }
     if (!response.ok || result.success === false || result.success === "false") {
-      throw new Error(result.message || "Envoi impossible");
+      throw new Error(result.message || `Envoi impossible (${response.status})`);
     }
     contactForm.reset();
     if (formNote) {
@@ -246,7 +348,11 @@ contactForm?.addEventListener("submit", async (event) => {
     }
   } catch (error) {
     if (formNote) {
-      formNote.textContent = `Le message n'a pas pu être envoyé automatiquement. Vous pouvez écrire directement à ${emailTo}.`;
+      const details = String(error?.message || "").trim();
+      const activationHint = "Si c'est le premier essai, vérifiez aussi la boîte ecococomada@gmail.com pour confirmer FormSubmit.";
+      formNote.textContent = details
+        ? `Envoi non finalisé : ${details}. ${activationHint}`
+        : `Envoi non finalisé. ${activationHint}`;
     }
   } finally {
     if (submitButton) {

@@ -18,7 +18,7 @@ window.ECOCOCO_CONFIG = {
       "bodyFont": "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
       "headingFont": "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
       "baseFontSize": "16px",
-      "headingScale": 1
+      "headingScale": 0.8
     },
     "header": {
       "height": 76,
@@ -26,7 +26,7 @@ window.ECOCOCO_CONFIG = {
       "navOpacity": 0.72,
       "navBlur": 18,
       "logoCircleSize": 176,
-      "logoImageScale": 52,
+      "logoImageScale": 80,
       "logoOffsetY": -16
     },
     "hero": {
@@ -42,7 +42,8 @@ window.ECOCOCO_CONFIG = {
   "links": {
     "email": "ecococomada@gmail.com",
     "phone": "+261 34 29 246 89",
-    "facebook": "https://www.facebook.com/profile.php?id=61591071884837"
+    "facebook": "https://www.facebook.com/profile.php?id=61591071884837",
+    "linkedin": "https://www.linkedin.com/company/ecococo-mdg/"
   },
   "texts": [
     {
@@ -50,7 +51,7 @@ window.ECOCOCO_CONFIG = {
       "group": "En-tête et menu",
       "label": "Nom à côté du logo",
       "selector": ".brand-name",
-      "value": "EcoCoco"
+      "value": "EcoCoco S.A.R.L - Madagascar"
     },
     {
       "id": "nav.about",
@@ -74,6 +75,13 @@ window.ECOCOCO_CONFIG = {
       "value": "Destination & opportunités"
     },
     {
+      "id": "nav.videos",
+      "group": "En-tête et menu",
+      "label": "Menu - Vidéothèque",
+      "selector": ".site-nav a[href=\"#videotheque\"]",
+      "value": "Vidéothèque"
+    },
+    {
       "id": "nav.contact",
       "group": "En-tête et menu",
       "label": "Menu - Contact",
@@ -84,8 +92,15 @@ window.ECOCOCO_CONFIG = {
       "id": "nav.facebook",
       "group": "En-tête et menu",
       "label": "Menu - Facebook",
-      "selector": ".site-nav .nav-social",
+      "selector": ".site-nav .nav-social:not(.nav-linkedin)",
       "value": "Facebook"
+    },
+    {
+      "id": "nav.linkedin",
+      "group": "En-tête et menu",
+      "label": "Menu - LinkedIn",
+      "selector": ".site-nav .nav-linkedin",
+      "value": "LinkedIn"
     },
     {
       "id": "hero.eyebrow",
@@ -428,7 +443,7 @@ window.ECOCOCO_CONFIG = {
       "group": "1 - Promoteurs",
       "label": "Promoteur 2 - nom",
       "selector": ".team-card:nth-child(2) h3",
-      "value": "Fenitra Rabeso"
+      "value": "Ary Fenitra Rabeso"
     },
     {
       "id": "team.2.role",
@@ -802,43 +817,71 @@ window.ECOCOCO_CONFIG = {
       "value": "ménages servis / mois"
     },
     {
+      "id": "videos.kicker",
+      "group": "4 - Vidéothèque",
+      "label": "Pastille de section",
+      "selector": "#videotheque .section-kicker",
+      "value": "4. Vidéothèque EcoCoco"
+    },
+    {
+      "id": "videos.eyebrow",
+      "group": "4 - Vidéothèque",
+      "label": "Petit titre",
+      "selector": "#videotheque .section-head .eyebrow",
+      "value": "Vidéothèque"
+    },
+    {
+      "id": "videos.title",
+      "group": "4 - Vidéothèque",
+      "label": "Titre",
+      "selector": "#videotheque .section-head h2",
+      "value": "Voir EcoCoco en action."
+    },
+    {
+      "id": "videos.intro",
+      "group": "4 - Vidéothèque",
+      "label": "Paragraphe introduction",
+      "selector": "#videotheque .section-head p:nth-of-type(2)",
+      "value": "Retrouvez les vidéos de démonstration, de terrain et de suivi du projet, directement lisibles depuis le site."
+    },
+    {
       "id": "contact.eyebrow",
-      "group": "4 - Contact",
+      "group": "5 - Contact",
       "label": "Petit titre",
       "selector": ".contact-copy .eyebrow",
-      "value": "4. Contactez-nous"
+      "value": "5. Contactez-nous"
     },
     {
       "id": "contact.title",
-      "group": "4 - Contact",
+      "group": "5 - Contact",
       "label": "Titre",
       "selector": ".contact-copy h2",
       "value": "Transformer les déchets d'aujourd'hui en énergie durable pour demain."
     },
     {
       "id": "contact.text",
-      "group": "4 - Contact",
+      "group": "5 - Contact",
       "label": "Paragraphe contact",
       "selector": ".contact-copy p:nth-of-type(2)",
       "value": "Partenaires techniques, bailleurs, distributeurs, institutions, cantines, restaurateurs ou acteurs de la cuisson propre : parlons des prochaines étapes d'EcoCoco."
     },
     {
       "id": "contact.form.title",
-      "group": "4 - Contact",
+      "group": "5 - Contact",
       "label": "Titre du formulaire",
       "selector": ".contact-form strong",
       "value": "Envoyer un message"
     },
     {
       "id": "contact.form.button",
-      "group": "4 - Contact",
+      "group": "5 - Contact",
       "label": "Bouton du formulaire",
       "selector": ".contact-form button",
       "value": "Envoyer le message"
     },
     {
       "id": "contact.form.note",
-      "group": "4 - Contact",
+      "group": "5 - Contact",
       "label": "Note sous le formulaire",
       "selector": ".contact-form .form-note",
       "value": "Le message sera envoyé directement à EcoCoco."
@@ -1076,35 +1119,35 @@ window.ECOCOCO_CONFIG = {
     },
     {
       "id": "contact.company",
-      "group": "4 - Contact",
+      "group": "5 - Contact",
       "label": "Nom officiel",
       "selector": ".contact-card strong",
       "value": "ECOCOCO SARL"
     },
     {
       "id": "contact.address.1",
-      "group": "4 - Contact",
+      "group": "5 - Contact",
       "label": "Adresse ligne 1",
       "selector": ".contact-card span:nth-of-type(1)",
       "value": "LOT 117 BIS Talatamaty MG 105"
     },
     {
       "id": "contact.address.2",
-      "group": "4 - Contact",
+      "group": "5 - Contact",
       "label": "Adresse ligne 2",
       "selector": ".contact-card span:nth-of-type(2)",
       "value": "Talatamaty - Antananarivo, Madagascar"
     },
     {
       "id": "contact.stat",
-      "group": "4 - Contact",
+      "group": "5 - Contact",
       "label": "STAT",
       "selector": ".contact-card span:nth-of-type(3)",
       "value": "STAT : 2017112025010056"
     },
     {
       "id": "contact.nif",
-      "group": "4 - Contact",
+      "group": "5 - Contact",
       "label": "NIF",
       "selector": ".contact-card span:nth-of-type(4)",
       "value": "NIF : 6019093781"
@@ -1139,7 +1182,7 @@ window.ECOCOCO_CONFIG = {
       "group": "Photos de section",
       "label": "Photo Qui sommes-nous",
       "selector": ".feature-photo img",
-      "src": "assets/img/founder-shells.webp"
+      "src": "assets/img/uploads/20260701-092353-PXL_20260423_083234262.jpg"
     },
     {
       "id": "team.1.photo",
@@ -1153,7 +1196,7 @@ window.ECOCOCO_CONFIG = {
       "group": "Promoteurs",
       "label": "Photo Fenitra",
       "selector": ".team-card:nth-child(2) .team-portrait",
-      "src": "assets/img/promoter-fenitra.png"
+      "src": "assets/img/uploads/20260701-092800-fenitra.png"
     },
     {
       "id": "team.3.photo",
@@ -1191,6 +1234,28 @@ window.ECOCOCO_CONFIG = {
       "src": "assets/img/combustion-green.webp"
     }
   ],
+  "videos": [
+    {
+      "id": "video-ecococo-1",
+      "title": "Déchets de coques à Manakara",
+      "url": "https://drive.google.com/file/d/1LusjWJzJkgRw2PnP2k4jI1Cps4Of2RwT/view?usp=sharing"
+    },
+    {
+      "id": "video-ecococo-2",
+      "title": "Triage et stockage des coques",
+      "url": "https://drive.google.com/file/d/1QnSBx-59e3EgFXj0j77gUNMo7hHGRt5j/view?usp=sharing"
+    },
+    {
+      "id": "video-ecococo-3",
+      "title": "Machine à briquette en marche",
+      "url": "https://drive.google.com/file/d/1HFagvmW36fe0eeap-UJ8P7caBk9CasvU/view?usp=sharing"
+    },
+    {
+      "id": "video-ecococo-4",
+      "title": "Test et benchmark vs charbon classique",
+      "url": "https://drive.google.com/file/d/1T2PMBKXM76hBIE_B0EoLuUVfdjPdCJYq/view?usp=sharing"
+    }
+  ],
   "imageLibrary": [
     "assets/img/hero-packaging.webp",
     "assets/img/logo-mark.png",
@@ -1217,7 +1282,11 @@ window.ECOCOCO_CONFIG = {
     "assets/img/promoter-narindra.png",
     "assets/img/promoter-mirasoa.png",
     "assets/img/promoter-fandresena.png",
-    "assets/img/promoter-ramasindraibe.png"
+    "assets/img/promoter-ramasindraibe.png",
+    "assets/img/uploads/20260701-092312-PXL_20260318_101001602.jpg",
+    "assets/img/uploads/20260701-092353-PXL_20260423_083234262.jpg",
+    "assets/img/uploads/20260701-092535-fenitra.jpg",
+    "assets/img/uploads/20260701-092800-fenitra.png"
   ],
-  "updatedAt": "2026-06-30T14:58:59"
+  "updatedAt": "2026-07-01T09:30:43"
 };
