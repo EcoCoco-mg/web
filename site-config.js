@@ -1236,24 +1236,9 @@ window.ECOCOCO_CONFIG = {
   ],
   "videos": [
     {
-      "id": "video-ecococo-1",
-      "title": "Déchets de coques à Manakara",
-      "url": "https://drive.google.com/file/d/1LusjWJzJkgRw2PnP2k4jI1Cps4Of2RwT/view?usp=sharing"
-    },
-    {
-      "id": "video-ecococo-2",
-      "title": "Triage et stockage des coques",
-      "url": "https://drive.google.com/file/d/1QnSBx-59e3EgFXj0j77gUNMo7hHGRt5j/view?usp=sharing"
-    },
-    {
-      "id": "video-ecococo-3",
-      "title": "Machine à briquette en marche",
-      "url": "https://drive.google.com/file/d/1HFagvmW36fe0eeap-UJ8P7caBk9CasvU/view?usp=sharing"
-    },
-    {
-      "id": "video-ecococo-4",
-      "title": "Test et benchmark vs charbon classique",
-      "url": "https://drive.google.com/file/d/1T2PMBKXM76hBIE_B0EoLuUVfdjPdCJYq/view?usp=sharing"
+      "id": "video-1783414878631",
+      "title": "Faire connaissance avec EcoCoco",
+      "url": "https://drive.google.com/file/d/1ZV6pEQphHPfV-VECFcnuUb_BHB9stuOc/view?usp=sharing"
     }
   ],
   "imageLibrary": [
@@ -1288,5 +1273,5 @@ window.ECOCOCO_CONFIG = {
     "assets/img/uploads/20260701-092535-fenitra.jpg",
     "assets/img/uploads/20260701-092800-fenitra.png"
   ],
-  "updatedAt": "2026-07-01T09:30:43"
+  "updatedAt": "2026-07-07T12:11:29"
 };
